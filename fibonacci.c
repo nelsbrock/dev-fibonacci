@@ -8,11 +8,12 @@
 #include <linux/sprintf.h>
 
 #define FIBONACCI_MODULE_NAME "fibonacci"
+#define FIBONACCI_MODULE_DESC "Fibonacci series device driver"
 #define FIBONACCI_DEVICE_NAME "fibonacci"
 #define FIBONACCI_BUF_LEN 64
 
 MODULE_AUTHOR("Niklas Elsbrock");
-MODULE_DESCRIPTION("Device driver for the " FIBONACCI_DEVICE_NAME " device");
+MODULE_DESCRIPTION(FIBONACCI_MODULE_DESC);
 MODULE_LICENSE("GPL");
 
 typedef unsigned long long fib_t;
@@ -86,6 +87,8 @@ static int __init fibonacci_init(void) {
 	if (ret)
 		pr_err(FIBONACCI_MODULE_NAME ": Unable to register "
 				FIBONACCI_DEVICE_NAME " device\n");
+	else
+		pr_info(FIBONACCI_MODULE_NAME ": " FIBONACCI_MODULE_DESC "\n");
 	return ret;
 }
 
