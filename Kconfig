@@ -1,0 +1,16 @@
+menuconfig FIBONACCI
+    tristate "Fibonacci series device"
+    default y
+    help
+      A Linux driver for a device which outputs the Fibonacci series.
+
+if FIBONACCI
+
+    config FIBONACCI_CHECK_OVERFLOW
+        bool "Terminate output on overflow"
+        default y
+        help
+          If this is enabled, the output of the Fibonacci series will be
+          terminated if the next Fibonacci number would overflow.
+
+endif

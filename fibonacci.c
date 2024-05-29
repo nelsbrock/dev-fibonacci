@@ -61,8 +61,10 @@ static ssize_t fibonacci_read(
 
 		*ppos += len;
 
+#ifdef CONFIG_FIBONACCI_CHECK_OVERFLOW
 		if (fib_current > fib_next)
 			break;
+#endif
 
 		fibonacci_advance(&fib_current, &fib_next);
 	}
